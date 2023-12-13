@@ -15,3 +15,22 @@ public:
 	    return (a[n-1]%m+b[n-1]%m)%m;
 	}
 };
+
+//----- 2nd Method -------//
+
+class Solution{
+public:
+	#define ll long long
+	ll m = 1e9+7;
+	ll countStrings(int n) {
+	  
+	   int a,b;
+	   a=b=1;
+	   for(ll i=1;i<n;i++){
+	       ll temp = a%m+b%m;
+	       b = a%m;
+	       a = temp%m;
+	   }
+	   return (a%m+b%m)%m;
+	}
+};
