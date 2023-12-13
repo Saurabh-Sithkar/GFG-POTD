@@ -1,0 +1,17 @@
+// Consecutive 1's not allowed 
+
+class Solution{
+public:
+	#define ll long long
+	ll m = 1e9+7;
+	ll countStrings(int n) {
+	    // code here
+	    ll a[n],b[n];
+	    a[0]=b[0]=1;
+	    for(ll i=1;i<n;i++){
+	        a[i] = a[i-1]%m + b[i-1]%m;
+	        b[i] = a[i-1]%m;
+	    }
+	    return (a[n-1]%m+b[n-1]%m)%m;
+	}
+};
