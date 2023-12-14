@@ -1,0 +1,21 @@
+// Painting the Fence
+// Using DP 
+
+class Solution{
+    public:
+    int m = 1e9 + 7;
+    long long countWays(int n, int k){
+        // code here
+        
+         int mod = 1e9 + 7;
+    long long same = 0, diff = k;
+
+    for (int i = 2; i <= n; i++) {
+        long long prevSame = same;
+        same = diff;
+        diff = (prevSame + diff) * (k - 1) % mod;
+    }
+
+    return (same + diff) % mod;
+    }
+};
