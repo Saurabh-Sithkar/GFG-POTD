@@ -1,0 +1,27 @@
+// Reach the Nth point 
+// This is same as Climbing Stairs question of LeetCode
+// Using 1-d DP
+
+class Solution{
+	public:
+	
+	    int ans(int n, vector<int>&dp,int m){
+	        if(n<=1){
+	            return 1;
+	        }
+	        if(dp[n]!=-1){
+	            return dp[n];
+	        }
+	        
+	        dp[n] = (ans(n-1,dp,m)+ans(n-2,dp,m))%m;
+	        return dp[n];
+	        
+	    }
+		int nthPoint(int n){
+		    // Code here
+		    int m = 1e9+7;
+		    vector<int>dp(n+1,-1);
+		    int sithkar = ans(n,dp,m);
+		    return sithkar;
+		}
+};
