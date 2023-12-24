@@ -1,0 +1,33 @@
+// Buy Maximum Stocks if i stock can be bought on i-th day
+// Can be solved using 2D matrix Or 1D
+// Here we use 1D array where we store two number in one index
+
+class Solution {
+public:
+    int buyMaximumProducts(int n, int k, int price[]){
+        //Write your code here
+        long arr[n];
+        
+        for(int i=0;i<n;i++){
+            arr[i] = price[i]*100000 +(i+1);
+        }
+        
+        sort(arr,arr+n);
+        
+        int cnt = 0;
+        
+        for(int i=0;i<n;i++){
+            int pr = (int)arr[i]/100000;
+            int day = (int)arr[i]%100000;         
+            if(k>=pr*day){
+                cnt = cnt+day;
+                k = k-pr*day;
+            }
+            else{
+                cnt += (k/pr);
+                k = k-(k/pr)*pr;
+            }          
+        }
+        return cnt;
+    }
+};
