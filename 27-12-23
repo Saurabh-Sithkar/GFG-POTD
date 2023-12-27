@@ -1,0 +1,24 @@
+// Anti Diagonal Traversal of Matrix
+
+class Solution {
+  public:
+    vector<int> antiDiagonalPattern(vector<vector<int>> matrix) 
+    {
+        // Code here
+        int n = matrix.size();
+        vector<int> ans;
+        
+        for(int j=0;j<n;j++){
+            for(int x = 0,y=j; y>-1 && x<n; x++, y--){
+                ans.push_back(matrix[x][y]);
+            }
+        }
+        
+        for(int i=1;i<n;i++){
+            for(int y=n-1, x=i; y>-1 && x<n ;x++,y--){
+                ans.push_back(matrix[x][y]);
+            }
+        }
+        return ans;
+    }
+};
