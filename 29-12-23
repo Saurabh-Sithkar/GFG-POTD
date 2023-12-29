@@ -1,0 +1,28 @@
+// Check if a string is repetition of its substring of k-length
+// Using map
+// T.C. = O(n)
+
+class Solution{
+public:
+	
+	int kSubstrConcat (int n, string s, int k)
+	{
+	    // Your Code Here
+	    map<string,int> m;
+	    
+	    if(n%k!=0){
+	        return 0;
+	    }
+	    else{
+	       for (int i = 0; i <= n - k; i += k) {  
+                string substring = s.substr(i, k);
+                m[substring]++;
+            }
+	    }
+	    if(m.size()>2){
+	        return 0;
+	    }
+	    return 1;
+	   
+	}
+};
