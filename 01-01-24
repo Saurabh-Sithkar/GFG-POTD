@@ -1,0 +1,32 @@
+// Array Pair Sum Divisibility Problem
+
+class Solution {
+  public:
+    bool canPair(vector<int> nums, int k) {
+        // Code here.
+        int n = nums.size();
+        
+        map<int,int> m;
+        
+        if(n%2!=0){
+            return 0;
+        }
+        
+        for(int i=0;i<n;i++){
+            int curr = nums[i]%k;
+            int need = (k-curr)%k;
+            
+            if(m.count(need)){
+                m[need]--;
+                
+                if(m[need]==0){
+                    m.erase(need);
+                }
+            }
+            else{
+                m[curr]++;
+            }
+        }
+        return m.size()==0;      
+    }
+};
