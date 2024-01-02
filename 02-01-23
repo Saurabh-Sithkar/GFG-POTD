@@ -1,0 +1,34 @@
+// Largest Sum Subarray of Size at least K
+// Sliding Window Problem 
+
+class Solution{
+    public:    
+    long long int maxSumWithK(long long int a[], long long int n, long long int k) 
+    {
+        
+        long long ans = INT_MIN;
+        long long sum = 0;
+        long long last = 0;
+        long long i=0,j=0;
+        
+        while(j<n){
+            
+            sum += a[j];
+             
+            if(j-i+1==k){
+                ans = max(ans,sum);
+            }
+            else if(j-i+1>k){
+                last += a[i];
+                i++;
+                if(last<0){
+                    sum -=last;
+                    last = 0;
+                }
+                ans = max(ans,sum);
+            }
+            j++;
+        }
+        return ans;
+    }
+};
