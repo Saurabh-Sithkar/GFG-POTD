@@ -1,0 +1,33 @@
+// Smallest window containing 0, 1 and 2
+
+class Solution {
+  public:
+    int smallestSubstring(string S) {
+        // Code here
+        int n = S.size();
+        int zero = -1,one = -1, two = -1;
+        int ans = 100001;
+        
+        for(int i=0;i<n;i++){
+            if(S[i]=='0'){
+                zero = i;
+            }
+            else if(S[i]=='1'){
+                one = i;
+            }
+            else if(S[i]=='2'){
+                two = i;
+            }
+            if(zero == -1 || one == -1 || two == -1){
+                continue;
+            }
+            else{
+                
+            int mini = min(min(zero,one),two);
+            int maxi = max(max(zero,one),two);
+            ans = min(ans,maxi - mini+1);
+            }   
+        }  
+        return ans==100001?-1:ans;
+    }
+};
