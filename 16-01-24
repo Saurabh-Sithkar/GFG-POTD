@@ -1,0 +1,21 @@
+// Sequence of Sequence
+// Using Recursion
+
+class Solution{
+public:
+
+int solve(int first,int m,int n){
+    if(n==0){
+        return 1;
+    }
+    if(n<0 || first>m){
+        return 0;
+    }
+    return solve(first+1,m,n) + solve(2*first,m,n-1);
+}
+
+    int numberSequence(int m, int n){
+        // code here
+        return solve(1,m,n);
+    }
+};
