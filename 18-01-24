@@ -1,0 +1,45 @@
+// Water the plants
+
+class Solution{
+    public:
+    int min_sprinklers(int gallery[], int n)
+    {
+        // code here
+        vector<pair<int,int>> cover(n);
+        
+        for(int i=0;i<n;i++){
+            if(gallery[i] == -1){
+                cover[i] = {1e7,1e7};
+            }
+            else{
+                cover[i] = {i - gallery[i] ,i +gallery[i] };
+            }
+        }
+        
+        sort(cover.begin(),cover.end());
+        
+        int take = 0;
+        int index = 0;
+        int ans = 0;
+        
+        while(take < n){
+            int p = take - 1;
+            
+            while(index < n && cover[index].first <= take){
+                p = max(p, cover[index++].second);
+            }
+            
+            if(p+1 > take){
+                ++ans;
+                take = p +1;
+            }
+            else{
+                return -1;
+                
+            }
+            
+        }
+        return ans;
+        
+    }
+};
