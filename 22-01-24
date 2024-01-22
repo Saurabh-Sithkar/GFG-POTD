@@ -1,0 +1,33 @@
+// Paths from root with a specified sum
+
+class Solution
+{
+    public:
+    vector<vector<int>> result;
+    vector<int> ans;
+    
+    void path(Node* root,int csum, int sum){
+        if(root==NULL){
+            return ;
+        }
+        
+        csum += root->key;
+        ans.push_back(root->key);
+        if(csum == sum){
+            result.push_back(ans);
+        }
+        path(root->left,csum,sum);
+        path(root->right,csum,sum);
+        ans.pop_back();
+        return;
+    }
+    
+    
+    
+    vector<vector<int>> printPaths(Node *root, int sum)
+    {
+        //code here
+        path(root,0,sum);
+        return result;
+    }
+};
