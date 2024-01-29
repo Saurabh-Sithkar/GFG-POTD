@@ -1,0 +1,31 @@
+// Count digit groupings of a number
+// Using dp concept( counting form )
+
+class Solution{
+	public:
+	int dp[101][901];
+	int solve(int i,int prev_sum,string& s){
+	    if(i==s.size()){
+	        return 1;
+	    }
+	    if(dp[i][prev_sum] != -1){
+	        return dp[i][prev_sum];
+	    }
+	    
+	    int sum = 0;
+	    int ans = 0;
+	    for(int j=i;j<s.size();j++){
+	        sum+= (s[j]-'0');
+	        if(sum>=prev_sum){
+	            ans += solve(j+1,sum,s);
+	        }
+	    }
+	    return dp[i][prev_sum]=ans;
+	}
+	int TotalCount(string str){
+	    // Code here
+	    memset(dp,-1,sizeof(dp));
+	    return solve(0,0,str);
+	}
+
+};
