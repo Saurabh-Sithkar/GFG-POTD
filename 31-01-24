@@ -1,0 +1,45 @@
+// Insert and Search in a Trie
+
+class Solution
+{
+    public:    
+        //Function to insert string into TRIE.
+        void insert(struct TrieNode *root, string word)
+        {
+            // code here
+            if(word.length()==0){
+                root->isLeaf = true;
+                return;
+            }
+            char ch = word[0];
+            int index = ch - 'a';
+           struct TrieNode* child;
+            if(root->children[index]!=NULL){
+                child = root->children[index];
+            }
+            else{
+                child = getNode();
+                root->children[index] = child;
+            }
+            insert(child,word.substr(1));
+        }
+        
+        //Function to use TRIE data structure and search the given string.
+        bool search(struct TrieNode *root, string word) 
+        {
+            // code here
+            if(word.length()==0){
+                return root->isLeaf;
+            }
+            char ch = word[0];
+            int index = ch-'a';
+            struct TrieNode* child;
+            if(root->children[index]!=NULL){
+                child = root->children[index];
+            }
+            else{
+                return false;
+            }
+            return search(child,word.substr(1));
+        }
+};
