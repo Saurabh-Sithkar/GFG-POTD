@@ -1,0 +1,24 @@
+// Panagram Checking
+// Very Easy Question Solved Using Simple Approach
+
+class Solution
+{
+  public:
+    //Function to check if a string is Pangram or not.
+    bool checkPangram (string s) {
+        // your code here
+        vector<int>ans(26);
+        for(int i=0;i<s.size();i++){
+           if (isalpha(s[i])) {
+            int index = tolower(s[i]) - 'a';
+            ans[index]++;
+        }
+        }
+        for(int i=0;i<26;i++){
+            if(ans[i]==0){
+                return false;
+            }
+        }
+        return true;
+    }
+};
