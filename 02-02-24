@@ -1,0 +1,21 @@
+// Implement Atoi
+
+class Solution{
+  public:
+    /*You are required to complete this method */
+    int atoi(string s) {
+        //Your code here
+bool neg=false;
+        if(s[0]=='-') neg=true;
+        if(neg) s=s.substr(1);
+        
+        int out=0;
+        for(int i=0; i<s.size(); i++){
+            if(s[i]>='0' and s[i]<='9')
+            out=out*10+s[i]-'0';
+            else return -1;
+        }
+        if(neg) return -1*out;
+        return out;
+    }
+};
