@@ -1,0 +1,36 @@
+// Sorted insert for circular linked list
+
+class Solution
+{
+    public:
+    Node *sortedInsert(Node* head, int data)
+    {
+       //Your code here
+         Node* newNode = new Node(data);
+       if(!head){
+           newNode -> next = newNode;
+           return newNode;
+       }
+       Node* curr = head, *prev = nullptr;
+       do{
+           if(curr -> data > data)
+                break;
+            prev = curr;
+            curr = curr -> next;
+       }while(curr != head);
+       if(!prev){
+           do{
+               prev = curr;
+               curr = curr -> next;
+           }while(curr != head);
+            prev -> next = newNode;
+            newNode -> next = curr;
+            return newNode;
+       }
+       else{
+            prev -> next = newNode;
+            newNode -> next = curr;
+       }
+       return head;
+    }
+};
