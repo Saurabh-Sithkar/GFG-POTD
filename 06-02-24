@@ -1,0 +1,33 @@
+// Count the nodes at distance K from leaf
+
+class Solution
+{
+    public:
+    //Function to return count of nodes at a given distance from leaf nodes.
+    bool check(Node* root, int k ,int dist){
+        if(root==NULL){
+            return 0;
+        }
+        if(dist == k && root->left == NULL && root->right==NULL){
+            return 1;
+        }
+        else if(root->left == NULL && root->right==NULL && dist != k){
+            return 0;
+        }
+        
+        return check(root->left ,k ,dist+1) || check(root->right,k,dist+1);
+    }
+    int printKDistantfromLeaf(Node* root, int k)
+    {
+    	//Add your code here. 
+    	if(root==NULL){
+    	    return 0;
+    	}
+    	int dist = 0;
+    	bool curr = check(root,k,dist);
+    	int left = printKDistantfromLeaf(root->left,k);
+    	int right = printKDistantfromLeaf(root->right,k);
+    	
+    	return curr+left+right;
+    }
+};
