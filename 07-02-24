@@ -1,0 +1,31 @@
+// Min distance between two given nodes of a Binary Tree
+
+class Solution{
+    public:
+    /* Should return minimum distance between a and b
+    in a tree with given root*/
+     int A,B,ans=0;
+    int calcdist(Node* root,int ht,int key){
+        if(root==NULL)return 0;
+        if(root->data==key) return ht;
+        return calcdist(root->left,ht+1,key)+calcdist(root->right,ht+1,key);
+    }
+    bool f(Node* root,int key){
+        if(root==NULL)return false;
+        if(root->data==key) return true;
+        return f(root->left,key)||f(root->right,key);
+    }
+    void dfs(Node* root){
+        if(root==NULL)return;
+        if(root->data==A || root->data==B||(f(root->left,A) && f(root->right,B)) || (f(root->left,B) && f(root->right,A))){
+            ans=calcdist(root,0,A)+calcdist(root,0,B);
+            return;
+        }
+        dfs(root->left),dfs(root->right);
+    }
+    int findDist(Node* root, int a, int b) {
+        A=a,B=b,dfs(root);
+        return ans;
+
+    }
+};
