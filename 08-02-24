@@ -1,0 +1,39 @@
+// Check if all leaves are at same level
+
+class Solution{
+  public:
+  int ans;
+  void solve(Node* root, int h , int &an){
+      if(!root){
+          return;
+      }
+      if(ans==0){
+          return ;
+      }
+      if(!root->left && !root->right){
+          if(an == -1){
+              an = h;
+          }
+          else{
+              if(h!=an){
+                  ans = 0;
+              }
+          }
+          return ;
+      }
+      solve(root->left,h+1,an);
+      solve(root->right,h+1,an);
+  }
+  
+  
+    /*You are required to complete this method*/
+    bool check(Node *root)
+    {
+        //Your code here
+        int an = -1;
+        int h = 0;
+        ans = 1;
+        solve(root,h,an);
+        return ans;
+    }
+};
