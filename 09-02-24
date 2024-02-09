@@ -1,0 +1,30 @@
+// Check for Children Sum Property in a Binary Tree
+
+class Solution {
+public:
+    bool solve(Node* root) {
+        if (root == NULL) {
+            return true;
+        }
+
+        if (root->left == NULL && root->right == NULL) {
+            return true;
+        }
+
+        int leftData = (root->left != NULL) ? root->left->data : 0;
+        int rightData = (root->right != NULL) ? root->right->data : 0;
+
+    
+        if (root->data == leftData + rightData) {
+        
+            return solve(root->left) && solve(root->right);
+        } else {
+            return false;
+        }
+    }
+
+    int isSumProperty(Node* root) {
+        // Add your code here
+        return solve(root);
+    }
+};
