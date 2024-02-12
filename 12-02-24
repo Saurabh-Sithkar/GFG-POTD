@@ -1,0 +1,20 @@
+// Recursive sequence
+
+class Solution{
+public:
+    long long sequence(int n){
+        // code here
+        long long mod = 1e9+7;
+        long long sum = 0;
+        long long c = 1;
+        for(int i=1;i<=n;i++){
+            long long temp = 1;
+            for(int j=0;j<i;j++){
+                temp *= c++;
+                temp %=mod;
+            }
+            sum = (sum+temp)%mod;
+        }
+        return sum;
+    }
+};
