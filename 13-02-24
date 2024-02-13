@@ -1,0 +1,21 @@
+// Clone an Undirected Graph
+
+class Solution {
+public:
+    unordered_map<Node*,Node*>mp;
+    Node* cloneGraph(Node* node) {
+        if(node == NULL){
+            return NULL;
+        }
+        Node* t = new Node(node->val);
+        mp[node] = t;
+        for(auto it:node->neighbors){
+            if(mp.find(it)==mp.end()){
+                t->neighbors.push_back(cloneGraph(it));
+            }else{
+                t->neighbors.push_back(mp[it]);
+            }
+        }
+        return t;
+    }
+};
