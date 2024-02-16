@@ -1,0 +1,28 @@
+// Flatten BST to sorted list
+
+class Solution
+{
+public:
+Node* newNode = new Node(-1);
+Node* head = newNode;
+void inorder(Node* root){
+    if(root == nullptr){
+        return;
+    }
+    inorder(root->left);
+    Node* newNode2 = new Node(root->data);
+    if(newNode->right != NULL){
+            newNode = newNode->right;
+        }
+
+        newNode->right = newNode2;
+        newNode = newNode2;
+    inorder(root->right);
+}
+    Node *flattenBST(Node *root)
+    {
+        // code here
+        inorder(root);
+        return head->right;
+    }
+};
