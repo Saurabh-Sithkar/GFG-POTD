@@ -1,0 +1,26 @@
+// Sum of leaf nodes in BST
+
+class Solution
+{
+    public:
+        /*You are required to complete below method */
+        void sumi(Node* root,int &sum){
+             if(root == nullptr){
+                 return;
+             }
+             if(root->left == nullptr && root->right == nullptr){
+                 sum += root->data;
+             }
+             sumi(root->left,sum);
+             sumi(root->right,sum);
+        }
+        
+        
+        int sumOfLeafNodes(Node *root){
+             /*Your code here */
+             int sum = 0;
+             sumi(root,sum);
+             
+             return sum;
+        }
+};
