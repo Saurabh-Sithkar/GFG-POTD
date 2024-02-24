@@ -1,0 +1,21 @@
+ // Maximum Sum Problem 
+
+ class Solution
+{
+    public:
+        int maxSum(int n)
+        {
+            //code here.
+            if(n<4){
+                return n;
+            }
+            int ans = maxSum(n/2) + maxSum(n/3) + maxSum(n/4);
+            
+            if(ans>n){
+                return ans;
+            }
+            else{
+                return n;
+            }
+        }
+};
