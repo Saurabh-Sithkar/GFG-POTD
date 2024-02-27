@@ -1,0 +1,26 @@
+// Check if a number is divisible by 8
+
+class Solution{
+    public:
+    int DivisibleByEight(string s){
+        //code here
+    int n = s.size();
+       long long int p;
+       string str = "";
+       if(n>=3){
+           str += s[n-3];
+           str += s[n-2];
+           str += s[n-1];
+           p = stoi(str);
+       }
+       else{
+           p = stoi(s);
+       }
+       
+       
+       if(p==0 || p%8==0){
+           return 1;
+       }
+       return -1;
+    }
+};
