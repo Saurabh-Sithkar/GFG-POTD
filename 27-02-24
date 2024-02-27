@@ -1,0 +1,13 @@
+// Play With OR
+
+int* game_with_number(int a[], int n)
+{
+    
+    // Complete the function
+       for(int i=0;i<n-1;i++){
+        int t=a[i],m=a[i+1];
+        a[i]=(t|m);
+    }
+    return a;
+    
+}
