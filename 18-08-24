@@ -1,0 +1,19 @@
+  bool canSplit(vector<int>& arr) {
+        // code here
+        int sum = 0;
+        for(auto i:arr){
+            sum += i;
+        }
+        if(sum%2!=0) return false;
+        int num = sum/2;
+        int sum2 = 0;
+        for(int i:arr){
+            sum2 += i;
+            if(sum2 == num){
+                return true;
+            }
+            else if(sum2>num){
+                return false;
+            }
+        }
+    }
