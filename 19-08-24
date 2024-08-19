@@ -1,0 +1,16 @@
+  int kthSmallest(vector<int> &arr, int k) {
+        // code here
+       int maxi = *max_element(arr.begin(),arr.end());
+       
+       vector<int> v(maxi+1,0);
+       for(int i:arr){
+           v[i]++;
+       }
+       int cnt = 0;
+       for(int i=0;i<=maxi;i++){
+           cnt += v[i];
+           if(cnt>=k){
+               return i;
+           }
+       }
+    }
