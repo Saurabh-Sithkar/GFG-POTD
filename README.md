@@ -31,7 +31,4 @@ The problems cover a wide range of topics, including:
 This repository is for educational purposes and is open for all to learn and contribute.
 
 Happy Coding!
-
 ---
-
-Feel free to update the links and add any additional information that suits your repository's needs!
