@@ -1,6 +1,5 @@
 class Solution {
   public:
-    // Complete this function
     // Function to sort the array according to frequency of elements.
   static bool cmp(pair<int,int>&a ,pair<int,int>b){
             if(a.second == b.second){
